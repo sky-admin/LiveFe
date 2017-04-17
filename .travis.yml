@@ -1,0 +1,22 @@
+language: node_js
+sudo: true
+node_js:
+- 7.7.0
+before_install:
+- openssl aes-256-cbc -K $encrypted_41d141060b51_key -iv $encrypted_41d141060b51_iv -in .travis/id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+- eval $(ssh-agent)
+- ssh-add ~/.ssh/id_rsa
+- cp .travis/ssh_config ~/.ssh/config
+
+install:
+- npm i
+- npm run test
+- npm run build
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: sh .travis/deploy.sh
+  on:
+    branch: master

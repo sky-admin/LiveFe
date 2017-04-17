@@ -1,0 +1,5 @@
+Host lihuanyu.com
+    User root
+    StrictHostKeyChecking no
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
