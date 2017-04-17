@@ -11,6 +11,7 @@
     "test": "npm run unit"
   },
   "dependencies": {
+    "iview": "^2.0.0-rc.10",
     "vue": "^2.2.2",
     "vue-resource": "^1.2.1",
     "vue-router": "^2.2.0"
