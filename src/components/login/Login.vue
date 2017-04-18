@@ -1,7 +1,18 @@
 <template>
   <div class="login">
     <div class="login-panel">
-
+      <Form :model="formRight" label-position="top">
+        <Form-item>
+          <Input v-model="formRight.name" placeholder="Username"></Input>
+        </Form-item>
+        <Form-item prop="password">
+          <Input v-model="password" placeholder="Password"></Input>
+        </Form-item>
+        <Button type="primary" long>Login</Button>
+        <p class="text forget">Forgot password?</p>
+        <p class="text reg">Do not have an account?</p>
+        <Button type="ghost" long v-on:click="changeToReg">Register</Button>
+      </Form>
     </div>
   </div>
 </template>
@@ -11,7 +22,12 @@
     name: 'login',
     data () {
       return {
-        msg: 'Welcome to Your Vue.js App'
+        formRight: {}
+      }
+    },
+    methods: {
+      changeToReg () {
+          this.$router.push('/reg')
       }
     }
   }
@@ -25,8 +41,28 @@
     height: 100vh;
 
     .login-panel {
-      background-color: #fff;
-      width: 300px;
+      /*background-color: #fff;*/
+      width: 350px;
+      padding: 20px;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      .text {
+        font-size: 12px;
+        text-align: center;
+      }
+
+      .forget {
+        margin-top: 15px;
+        color: #317ffe;
+        cursor: pointer;
+      }
+
+      .reg {
+        margin-bottom: 15px;
+      }
     }
   }
 </style>
