@@ -1,22 +1,23 @@
 <template>
   <div class="login">
     <div class="login-panel">
+      <h1 class="logo">寰宇直播</h1>
       <Form :model="formRight" label-position="top">
         <Form-item>
-          <Input v-model="formRight.name" placeholder="Name"></Input>
+          <Input v-model="formRight.name" placeholder="用户名"></Input>
         </Form-item>
         <Form-item>
-          <Input v-model="formRight.email" placeholder="Email"></Input>
+          <Input v-model="formRight.email" placeholder="邮箱"></Input>
         </Form-item>
         <Form-item prop="password">
-          <Input v-model="password" placeholder="Password"></Input>
+          <Input v-model="password" placeholder="密码"></Input>
         </Form-item>
         <div style="text-align: center; margin: -8px 0 13px 0;">
-          <Checkbox v-model="single">Agree the terms and policy</Checkbox>
+          <Checkbox v-model="agree">同意各项协议</Checkbox>
         </div>
-        <Button type="primary" long v-on:click="handleReg">Sign in</Button>
-        <p class="text reg">Already have an account?</p>
-        <Button type="ghost" long v-on:click="changeToLogin">Login</Button>
+        <Button type="primary" long v-on:click="handleReg">注册</Button>
+        <p class="text reg">已经注册账号?</p>
+        <Button type="ghost" long v-on:click="changeToLogin">登录</Button>
       </Form>
     </div>
   </div>
@@ -54,6 +55,13 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+
+      .logo {
+        font-size: 60px;
+        color: #e0e0e0;
+        text-align: center;
+        margin-bottom: 40px;
+      }
 
       .text {
         font-size: 12px;

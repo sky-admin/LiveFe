@@ -1,17 +1,18 @@
 <template>
   <div class="login">
     <div class="login-panel">
+      <h1 class="logo">寰宇直播</h1>
       <Form :model="formRight" label-position="top">
         <Form-item>
-          <Input v-model="formRight.name" placeholder="Username"></Input>
+          <Input v-model="formRight.name" placeholder="用户名"></Input>
         </Form-item>
         <Form-item prop="password">
-          <Input v-model="password" placeholder="Password"></Input>
+          <Input v-model="formRight.password" placeholder="密码"></Input>
         </Form-item>
-        <Button type="primary" long v-on:click="handleLogin">Login</Button>
-        <p class="text forget">Forgot password?</p>
-        <p class="text reg">Do not have an account?</p>
-        <Button type="ghost" long v-on:click="changeToReg">Sign in</Button>
+        <Button type="primary" long v-on:click="handleLogin">登录</Button>
+        <p class="text forget">忘记密码?</p>
+        <p class="text reg">还没有账号?</p>
+        <Button type="ghost" long v-on:click="changeToReg">注册</Button>
       </Form>
     </div>
   </div>
@@ -49,6 +50,13 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+
+      .logo {
+        font-size: 60px;
+        color: #e0e0e0;
+        text-align: center;
+        margin-bottom: 40px;
+      }
 
       .text {
         font-size: 12px;
