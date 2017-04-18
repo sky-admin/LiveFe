@@ -8,10 +8,10 @@
         <Form-item prop="password">
           <Input v-model="password" placeholder="Password"></Input>
         </Form-item>
-        <Button type="primary" long>Login</Button>
+        <Button type="primary" long v-on:click="handleLogin">Login</Button>
         <p class="text forget">Forgot password?</p>
         <p class="text reg">Do not have an account?</p>
-        <Button type="ghost" long v-on:click="changeToReg">Register</Button>
+        <Button type="ghost" long v-on:click="changeToReg">Sign in</Button>
       </Form>
     </div>
   </div>
@@ -28,7 +28,8 @@
     methods: {
       changeToReg () {
           this.$router.push('/reg')
-      }
+      },
+      handleLogin () {}
     }
   }
 </script>
