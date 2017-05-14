@@ -18,6 +18,7 @@
         <Button type="primary" long v-on:click="handleReg">注册</Button>
         <p class="text reg">已经注册账号?</p>
         <Button type="ghost" long v-on:click="changeToLogin">登录</Button>
+        <Button class="back" type="ghost" long v-on:click="backToIndex">返回主页</Button>
       </Form>
     </div>
   </div>
@@ -35,7 +36,12 @@
       changeToLogin () {
         this.$router.push('/login')
       },
-      handleReg () {}
+      handleReg () {
+      },
+      backToIndex() {
+        this.$router.push('/')
+      }
+
     }
   }
 </script>
@@ -71,6 +77,10 @@
       .reg {
         margin-bottom: 15px;
         margin-top: 10px;
+      }
+
+      .back {
+        margin-top: 20px;
       }
     }
   }
