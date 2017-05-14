@@ -55,7 +55,9 @@
           </Menu>
         </i-col>
         <i-col span="19">
-          <div class="layout-content-main">内容区域</div>
+          <div class="layout-content-main">
+            <video-player></video-player>
+          </div>
         </i-col>
       </Row>
     </div>
@@ -66,15 +68,22 @@
 </template>
 
 <script>
-  export default {}
+  import VideoPlayer from '../common/VideoPlayer.vue';
+
+  export default {
+    components: {
+      VideoPlayer
+    }
+  }
 </script>
 
 <style lang="less" scoped>
-  .layout{
+  .layout {
     border: 1px solid #d7dde4;
     background: #f5f7f9;
   }
-  .layout-logo{
+
+  .layout-logo {
     width: 150px;
     height: 40px;
     background: #e3e8ee;
@@ -91,30 +100,36 @@
       color: #5cadff;
     }
   }
-  .layout-nav{
+
+  .layout-nav {
     width: 420px;
     margin: 0 20px;
     float: right;
   }
-  .layout-assistant{
+
+  .layout-assistant {
     width: 300px;
     margin: 0 auto;
     height: inherit;
   }
-  .layout-breadcrumb{
+
+  .layout-breadcrumb {
     padding: 10px 15px 0;
   }
-  .layout-content{
+
+  .layout-content {
     min-height: 200px;
     margin: 15px;
     overflow: hidden;
     background: #fff;
     border-radius: 4px;
   }
-  .layout-content-main{
+
+  .layout-content-main {
     padding: 10px;
   }
-  .layout-copy{
+
+  .layout-copy {
     text-align: center;
     padding: 10px 0 20px;
     color: #9ea7b4;
