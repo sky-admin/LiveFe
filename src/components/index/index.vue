@@ -1,28 +1,6 @@
 <template>
   <div class="layout">
-    <Menu mode="horizontal" theme="dark" active-name="1">
-      <div class="layout-logo">
-        <p>寰宇直播</p>
-      </div>
-      <div class="layout-nav">
-        <Menu-item name="1">
-          <Icon type="ios-navigate"></Icon>
-          注册
-        </Menu-item>
-        <Menu-item name="2">
-          <Icon type="ios-keypad"></Icon>
-          登录
-        </Menu-item>
-        <Menu-item name="3">
-          <Icon type="ios-analytics"></Icon>
-          导航三
-        </Menu-item>
-        <Menu-item name="4">
-          <Icon type="ios-paper"></Icon>
-          导航四
-        </Menu-item>
-      </div>
-    </Menu>
+    <top-nav></top-nav>
     <div class="layout-content">
       <Row>
         <i-col span="5">
@@ -69,6 +47,7 @@
 
 <script>
   import VideoPlayer from '../common/VideoPlayer.vue';
+  import TopNav from '../common/TopNav.vue';
 
   export default {
     data() {
@@ -84,7 +63,8 @@
 
     },
     components: {
-      VideoPlayer
+      VideoPlayer,
+      TopNav
     }
   }
 </script>
@@ -94,30 +74,6 @@
     background: #f5f7f9;
     text-align: center;
     width: 100%;
-  }
-
-  .layout-logo {
-    width: 150px;
-    height: 40px;
-    background: #e3e8ee;
-    border-radius: 3px;
-    float: left;
-    position: relative;
-    top: 10px;
-    left: 20px;
-    line-height: 40px;
-    text-align: center;
-
-    p {
-      font-size: 30px;
-      color: #5cadff;
-    }
-  }
-
-  .layout-nav {
-    width: 420px;
-    margin: 0 20px;
-    float: right;
   }
 
   .layout-assistant {
