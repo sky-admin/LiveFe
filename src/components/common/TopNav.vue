@@ -55,8 +55,7 @@
   }
 
   .layout-nav {
-    width: 420px;
-    margin: 0 20px;
+    margin: 0 50px;
     float: right;
   }
 </style>

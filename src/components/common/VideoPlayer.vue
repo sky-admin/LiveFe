@@ -1,9 +1,14 @@
 <template>
-  <div ref="playercontainer"></div>
+  <div class="abc" ref="playercontainer"></div>
 </template>
 
 <script>
   export default {
+    data() {
+      return {
+        player: null
+      }
+    },
     props: {
       playerConfig: {
         type: Object,
@@ -11,18 +16,20 @@
           return {
             width: 800,
             height: 600,
-            file:  "rtmp://cyberplayerplay.kaywang.cn/cyberplayer/demo-L1"
+            file: "rtmp://cyberplayerplay.kaywang.cn/cyberplayer/demo-L1"
           }
         }
       }
     },
     mounted() {
+      let self = this;
       let playerContainer = this.$refs.playercontainer;
-      let player = cyberplayer(playerContainer).setup({
-        width: this.playerConfig.width,
-        height: this.playerConfig.height,
-        file: "rtmp://cyberplayerplay.kaywang.cn/cyberplayer/demo-L1", // <—rtmp直播地址
-//        autostart: true,
+      cyberplayer(playerContainer).remove();
+      this.player = cyberplayer(playerContainer).setup({
+        width: self.playerConfig.width,
+        height: self.playerConfig.height,
+        file: self.playerConfig.file, // <—rtmp直播地址
+        autostart: true,
         stretching: "uniform",
         volume: 100,
         controls: true,

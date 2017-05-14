@@ -10,7 +10,7 @@
           <Input v-model="formRight.email" placeholder="邮箱"></Input>
         </Form-item>
         <Form-item prop="password">
-          <Input v-model="password" placeholder="密码"></Input>
+          <Input v-model="formRight.password" placeholder="密码"></Input>
         </Form-item>
         <div style="text-align: center; margin: -8px 0 13px 0;">
           <Checkbox v-model="agree">同意各项协议</Checkbox>
@@ -29,7 +29,8 @@
     name: 'login',
     data () {
       return {
-        formRight: {}
+        formRight: {},
+        agree: null
       }
     },
     methods: {
