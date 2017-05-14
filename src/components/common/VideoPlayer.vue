@@ -1,13 +1,26 @@
 <template>
-  <div id="playercontainer"></div>
+  <div ref="playercontainer"></div>
 </template>
 
 <script>
   export default {
+    props: {
+      playerConfig: {
+        type: Object,
+        default() {
+          return {
+            width: 800,
+            height: 600,
+            file:  "rtmp://cyberplayerplay.kaywang.cn/cyberplayer/demo-L1"
+          }
+        }
+      }
+    },
     mounted() {
-      var player = cyberplayer("playercontainer").setup({
-        width: 680,
-        height: 448,
+      let playerContainer = this.$refs.playercontainer;
+      let player = cyberplayer(playerContainer).setup({
+        width: this.playerConfig.width,
+        height: this.playerConfig.height,
         file: "rtmp://cyberplayerplay.kaywang.cn/cyberplayer/demo-L1", // <—rtmp直播地址
 //        autostart: true,
         stretching: "uniform",

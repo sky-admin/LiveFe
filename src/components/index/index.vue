@@ -26,40 +26,40 @@
     <div class="layout-content">
       <Row>
         <i-col span="5">
-          <Menu active-name="1-2" width="auto" :open-names="['1']">
-            <Submenu name="1">
-              <template slot="title">
-                <Icon type="ios-navigate"></Icon>
-                导航一
-              </template>
-              <Menu-item name="1-1">选项 1</Menu-item>
-              <Menu-item name="1-2">选项 2</Menu-item>
-              <Menu-item name="1-3">选项 3</Menu-item>
-            </Submenu>
-            <Submenu name="2">
-              <template slot="title">
-                <Icon type="ios-keypad"></Icon>
-                导航二
-              </template>
-              <Menu-item name="2-1">选项 1</Menu-item>
-              <Menu-item name="2-2">选项 2</Menu-item>
-            </Submenu>
-            <Submenu name="3">
-              <template slot="title">
-                <Icon type="ios-analytics"></Icon>
-                导航三
-              </template>
-              <Menu-item name="3-1">选项 1</Menu-item>
-              <Menu-item name="3-2">选项 2</Menu-item>
-            </Submenu>
+          <Menu active-name="1" width="auto">
+            <Menu-group title="内容管理">
+              <Menu-item name="1">
+                <Icon type="document-text"></Icon>
+                文章管理
+              </Menu-item>
+              <Menu-item name="2">
+                <Icon type="chatbubbles"></Icon>
+                评论管理
+              </Menu-item>
+            </Menu-group>
+            <Menu-group title="统计分析">
+              <Menu-item name="3">
+                <Icon type="heart"></Icon>
+                用户留存
+              </Menu-item>
+              <Menu-item name="4">
+                <Icon type="heart-broken"></Icon>
+                流失用户
+              </Menu-item>
+            </Menu-group>
           </Menu>
         </i-col>
-        <i-col span="19">
+        <i-col span="19" ref="layout">
           <div class="layout-content-main">
-            <video-player></video-player>
+            <video-player :player-config="playerConfig"></video-player>
           </div>
         </i-col>
       </Row>
+      <div>
+        <Row>
+
+        </Row>
+      </div>
     </div>
     <div class="layout-copy">
       2017 &copy; skyADMIN
@@ -71,6 +71,18 @@
   import VideoPlayer from '../common/VideoPlayer.vue';
 
   export default {
+    data() {
+      return {
+        playerConfig: {
+          width: '100%',
+          height: 600,
+          file:  "rtmp://cyberplayerplay.kaywang.cn/cyberplayer/demo-L1"
+        }
+      }
+    },
+    mounted() {
+
+    },
     components: {
       VideoPlayer
     }
@@ -79,8 +91,9 @@
 
 <style lang="less" scoped>
   .layout {
-    border: 1px solid #d7dde4;
     background: #f5f7f9;
+    text-align: center;
+    width: 100%;
   }
 
   .layout-logo {
@@ -118,11 +131,15 @@
   }
 
   .layout-content {
+    display: inline-block;
+    width: 80%;
+    text-align: left;
     min-height: 200px;
     margin: 15px;
     overflow: hidden;
     background: #fff;
     border-radius: 4px;
+    padding: 20px;
   }
 
   .layout-content-main {
