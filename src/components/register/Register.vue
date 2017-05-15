@@ -10,7 +10,7 @@
           <Input v-model="formRight.email" placeholder="邮箱"></Input>
         </Form-item>
         <Form-item prop="password">
-          <Input v-model="password" placeholder="密码"></Input>
+          <Input v-model="formRight.password" placeholder="密码"></Input>
         </Form-item>
         <div style="text-align: center; margin: -8px 0 13px 0;">
           <Checkbox v-model="agree">同意各项协议</Checkbox>
@@ -18,6 +18,7 @@
         <Button type="primary" long v-on:click="handleReg">注册</Button>
         <p class="text reg">已经注册账号?</p>
         <Button type="ghost" long v-on:click="changeToLogin">登录</Button>
+        <Button class="back" type="ghost" long v-on:click="backToIndex">返回主页</Button>
       </Form>
     </div>
   </div>
@@ -28,14 +29,20 @@
     name: 'login',
     data () {
       return {
-        formRight: {}
+        formRight: {},
+        agree: null
       }
     },
     methods: {
       changeToLogin () {
         this.$router.push('/login')
       },
-      handleReg () {}
+      handleReg () {
+      },
+      backToIndex() {
+        this.$router.push('/')
+      }
+
     }
   }
 </script>
@@ -71,6 +78,10 @@
       .reg {
         margin-bottom: 15px;
         margin-top: 10px;
+      }
+
+      .back {
+        margin-top: 20px;
       }
     }
   }
