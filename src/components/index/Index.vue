@@ -38,15 +38,15 @@
         </Row>
       </div>
     </div>
-    <div class="layout-copy">
-      2017 &copy; skyADMIN
-    </div>
+
+    <v-footer></v-footer>
   </div>
 </template>
 
 <script>
   import VideoPlayer from '../common/VideoPlayer.vue';
   import TopNav from '../common/TopNav.vue';
+  import vFooter from '../common/Footer.vue';
 
   export default {
     data() {
@@ -63,7 +63,8 @@
     },
     components: {
       VideoPlayer,
-      TopNav
+      TopNav,
+      vFooter
     }
   }
 </script>
@@ -99,11 +100,5 @@
 
   .layout-content-main {
     padding: 10px;
-  }
-
-  .layout-copy {
-    text-align: center;
-    padding: 10px 0 20px;
-    color: #9ea7b4;
   }
 </style>
