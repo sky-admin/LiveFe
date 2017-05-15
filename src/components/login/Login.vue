@@ -13,6 +13,7 @@
         <p class="text forget">忘记密码?</p>
         <p class="text reg">还没有账号?</p>
         <Button type="ghost" long v-on:click="changeToReg">注册</Button>
+        <Button class="back" type="ghost" long v-on:click="backToIndex">返回主页</Button>
       </Form>
     </div>
   </div>
@@ -27,10 +28,15 @@
       }
     },
     methods: {
-      changeToReg () {
-          this.$router.push('/reg')
+      changeToReg() {
+        this.$router.push('/reg')
       },
-      handleLogin () {}
+      handleLogin() {
+        //TODO: 登录逻辑
+      },
+      backToIndex() {
+        this.$router.push('/')
+      }
     }
   }
 </script>
@@ -71,6 +77,10 @@
 
       .reg {
         margin-bottom: 15px;
+      }
+
+      .back {
+        margin-top: 20px;
       }
     }
   }
