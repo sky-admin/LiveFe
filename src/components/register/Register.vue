@@ -25,12 +25,13 @@
 </template>
 
 <script>
+  import API from '../../config/request';
   export default {
     name: 'login',
     data () {
       return {
         formRight: {},
-        agree: null
+        agree: false
       }
     },
     methods: {
@@ -38,6 +39,40 @@
         this.$router.push('/login')
       },
       handleReg () {
+        // TODO：表单校验
+        if (this.agree !== true) {
+          this.$Notice.error({
+            title: '请同意相关协议和条款'
+          });
+          return;
+        }
+
+        let postData = {
+          username: this.formRight.name,
+          password: this.formRight.password,
+          email: this.formRight.email
+        };
+        this.$http.post(API.reg, postData).then(
+          (res) => {
+            console.log(res);
+            if (res.ok === true) {
+              // 注册成功
+              this.$Notice.success({
+                title: '注册成功，请登录！'
+              });
+              this.$router.push('login')
+            } else {
+              this.$Notice.error({
+                title: '注册失败'
+              });
+            }
+          },
+          () => {
+            this.$Notice.error({
+              title: '注册失败'
+            });
+          }
+        )
       },
       backToIndex() {
         this.$router.push('/')
