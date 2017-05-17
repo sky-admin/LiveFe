@@ -1,6 +1,6 @@
 <template>
   <Menu mode="horizontal" theme="dark" v-on:on-select="handleMenuSelectChange">
-    <div class="layout-logo">
+    <div class="layout-logo" v-on:click="toIndex">
       <p>寰宇直播</p>
     </div>
     <div class="layout-nav">
@@ -29,6 +29,9 @@
             this.$router.push('reg');
             break;
         }
+      },
+      toIndex() {
+        this.$router.push('/')
       }
     }
   }
@@ -46,6 +49,7 @@
     left: 20px;
     line-height: 40px;
     text-align: center;
+    cursor: pointer;
 
     p {
       font-size: 30px;
