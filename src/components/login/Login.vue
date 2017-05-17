@@ -37,22 +37,16 @@
           username: this.formRight.name,
           password: this.formRight.password
         };
-        this.$http.post(API.login, postData).then(
-          (res) => {
-            if (res.ok === true) {
-              this.$Notice.success({
-                title: '登录成功！'
-              });
-              // todo: 登录成功的处理
-            }
+        let promise = this.$http.post(API.login, postData);
+        this.$store.dispatch('doLogin', promise).then(
+          () => {
+            this.$Notice.success({title: '登录成功！'});
+            this.$router.push('usercenter');
           },
           () => {
-            // todo：错误处理
-            this.$Notice.error({
-              title: '登录失败'
-            });
+            this.$Notice.error({title: '登录失败'})
           }
-        )
+        );
       },
       backToIndex() {
         this.$router.push('/')
