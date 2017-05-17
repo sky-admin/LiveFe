@@ -7,7 +7,7 @@
           <Input v-model="formRight.name" placeholder="用户名"></Input>
         </Form-item>
         <Form-item prop="password">
-          <Input v-model="formRight.password" placeholder="密码"></Input>
+          <Input type="password" v-model="formRight.password" placeholder="密码"></Input>
         </Form-item>
         <Button type="primary" long v-on:click="handleLogin">登录</Button>
         <p class="text forget">忘记密码?</p>
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+  import API from '../../config/request'
   export default {
     name: 'login',
     data () {
@@ -32,7 +33,20 @@
         this.$router.push('/reg')
       },
       handleLogin() {
-        //TODO: 登录逻辑
+        let postData = {
+          username: this.formRight.name,
+          password: this.formRight.password
+        };
+        let promise = this.$http.post(API.login, postData);
+        this.$store.dispatch('doLogin', promise).then(
+          () => {
+            this.$Notice.success({title: '登录成功！'});
+            this.$router.push('usercenter');
+          },
+          () => {
+            this.$Notice.error({title: '登录失败'})
+          }
+        );
       },
       backToIndex() {
         this.$router.push('/')
