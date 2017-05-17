@@ -3,10 +3,10 @@
  */
 
 // 本地开发用
-const baseUrl = 'http://localhost:3000/api/';
+// const baseUrl = 'http://localhost:3000/api/';
 
 // 线上正式版
-// const baseUrl = 'https://apis.lihuanyu.com/api/';
+const baseUrl = 'https://apis.lihuanyu.com/api/';
 
 const API = {
   reg: baseUrl + 'Users',
