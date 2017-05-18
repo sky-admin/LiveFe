@@ -18,6 +18,7 @@
 </template>
 
 <script>
+  import API from '../../config/request';
   export default {
     computed: {
       unauth() {
@@ -27,6 +28,9 @@
         else {
           return true;
         }
+      },
+      accessToken() {
+        return this.$store.state.user.accessToken;
       }
     },
     created() {
@@ -42,12 +46,24 @@
             this.$router.push('reg');
             break;
           case '3':
-            // 登出逻辑
+            this.doLogout();
             break;
         }
       },
       toIndex() {
         this.$router.push('/')
+      },
+      doLogout() {
+        let promise = this.$http.post(API.logout(this.accessToken));
+        this.$store.dispatch('doLogout', promise).then(
+          () => {
+            this.$Notice.success({title: '登出成功！'});
+          },
+          () => {
+            this.$Notice.error({title: '登出失败，是否已登出！'});
+          }
+        );
+        this.$router.push('/');
       }
     }
   }
