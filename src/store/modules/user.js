@@ -62,8 +62,14 @@ const actions = {
     return new Promise((resolve, reject) => {
       promise.then(
         (res) => {
-          console.log(res.data)
-        }
+          if (res.ok === true) {
+            context.commit(types.SET_USERDATA, {userData: res.data});
+            resolve();
+          } else {
+            reject();
+          }
+        },
+        () => {reject()}
       )
     })
   },
@@ -85,6 +91,9 @@ const mutations = {
   },
   [types.SET_USERID] (state, {userId}) {
     state.userId = userId
+  },
+  [types.SET_USERDATA] (state, {userData}) {
+    state.userData = userData
   }
 };
 
