@@ -4,18 +4,35 @@
       <p>寰宇直播</p>
     </div>
     <div class="layout-nav">
-      <Menu-item name="1">
+      <Menu-item v-if="unauth" name="1">
         登录
       </Menu-item>
-      <Menu-item name="2">
+      <Menu-item v-if="unauth" name="2">
         注册
+      </Menu-item>
+      <Menu-item v-if="!unauth" name="3">
+        登出
       </Menu-item>
     </div>
   </Menu>
 </template>
 
 <script>
+  import API from '../../config/request';
   export default {
+    computed: {
+      unauth() {
+        if (this.$store.state.user.userId !== '') {
+          return false;
+        }
+        else {
+          return true;
+        }
+      },
+      accessToken() {
+        return this.$store.state.user.accessToken;
+      }
+    },
     created() {
 
     },
@@ -28,10 +45,25 @@
           case '2':
             this.$router.push('reg');
             break;
+          case '3':
+            this.doLogout();
+            break;
         }
       },
       toIndex() {
         this.$router.push('/')
+      },
+      doLogout() {
+        let promise = this.$http.post(API.logout(this.accessToken));
+        this.$store.dispatch('doLogout', promise).then(
+          () => {
+            this.$Notice.success({title: '登出成功！'});
+          },
+          () => {
+            this.$Notice.error({title: '登出失败，是否已登出！'});
+          }
+        );
+        this.$router.push('/');
       }
     }
   }
