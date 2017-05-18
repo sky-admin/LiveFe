@@ -6,7 +6,14 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  created() {
+    let path = this.$router.path;
+    let self = this;
+    this.$store.dispatch('init', {path, router: self.$router})
+  },
+  methods: {
+  }
 }
 </script>
 
