@@ -4,11 +4,14 @@
       <p>寰宇直播</p>
     </div>
     <div class="layout-nav">
-      <Menu-item name="1">
+      <Menu-item v-if="unauth" name="1">
         登录
       </Menu-item>
-      <Menu-item name="2">
+      <Menu-item v-if="unauth" name="2">
         注册
+      </Menu-item>
+      <Menu-item v-if="!unauth" name="3">
+        登出
       </Menu-item>
     </div>
   </Menu>
@@ -16,6 +19,16 @@
 
 <script>
   export default {
+    computed: {
+      unauth() {
+        if (this.$store.state.user.userId !== '') {
+          return false;
+        }
+        else {
+          return true;
+        }
+      }
+    },
     created() {
 
     },
@@ -27,6 +40,9 @@
             break;
           case '2':
             this.$router.push('reg');
+            break;
+          case '3':
+            // 登出逻辑
             break;
         }
       },
