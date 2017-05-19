@@ -10,6 +10,9 @@
       <Menu-item v-if="unauth" name="2">
         注册
       </Menu-item>
+      <Menu-item v-if="!unauth" name="4">
+        个人中心
+      </Menu-item>
       <Menu-item v-if="!unauth" name="3">
         登出
       </Menu-item>
@@ -47,6 +50,9 @@
             break;
           case '3':
             this.doLogout();
+            break;
+          case '4':
+            this.$router.push('usercenter');
             break;
         }
       },
