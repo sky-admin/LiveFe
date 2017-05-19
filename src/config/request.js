@@ -12,7 +12,8 @@ const API = {
   reg: baseUrl + 'Users',
   login: baseUrl + 'Users/login',
   user(userId, accessToken) {return baseUrl + 'Users/' + userId + '?access_token=' + accessToken},
-  logout(accessToken) {return baseUrl + 'Users/logout?access_token=' + accessToken}
+  logout(accessToken) {return baseUrl + 'Users/logout?access_token=' + accessToken},
+  changePassword(accessToken) {return baseUrl + 'Users/change-password?access_token=' + accessToken}
 };
 
 module.exports = API;
