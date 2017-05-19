@@ -28,7 +28,7 @@
       </Form>
     </div>
     <div class="button-area">
-      <Button v-if="!edit" type="primary" v-on:click="edit = !edit">编辑</Button>
+      <Button v-if="!edit" type="primary" v-on:click="editMessage">编辑</Button>
       <Button v-if="edit" type="success" v-on:click="save">保存</Button>
     </div>
   </div>
@@ -70,20 +70,29 @@
         let promise = this.$http.get(API.user(this.userId, this.accessToken));
         this.$store.dispatch('getUserData', promise);
       },
+      editMessage() {
+        this.formItem.name = this.userData.name;
+        this.formItem.motto = this.userData.motto;
+        this.formItem.sex = this.userData.sex;
+        this.edit = true;
+      },
       save() {
         let postData = {
           name: this.formItem.name,
           sex: this.formItem.sex,
           motto: this.formItem.motto
         };
-        let self = this;
         this.$http.patch(API.user(this.userId, this.accessToken), postData).then(
           (res) => {
             if (res.ok === true) {
               this.loadData();
               this.edit = false;
+              this.$Notice.success({title: '保存成功！'});
+            } else {
+              this.$Notice.error({title: '保存失败！'});
             }
-          }
+          },
+          () => {this.$Notice.error({title: '保存失败！'})}
         )
       }
     }
