@@ -5,6 +5,7 @@ import Register from '../components/register/Register.vue'
 import Index from '../components/index/Index.vue'
 import Live from '../components/live/Live.vue'
 import UserCenter from '../components/usercenter/UserCenter.vue';
+import Profile from '../components/usercenter/UserMainPanel.vue';
 // import Hello from '@/components/Hello'
 
 Vue.use(Router)
@@ -34,7 +35,15 @@ export default new Router({
     {
       path: '/usercenter',
       name: 'usercenter',
-      component: UserCenter
+      component: UserCenter,
+      redirect: 'usercenter/profile',
+      children: [
+        {
+          path: 'profile',
+          name: 'profile',
+          component: Profile
+        }
+      ]
     }
   ]
 })
