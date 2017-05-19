@@ -40,21 +40,22 @@ const actions = {
     })
   },
   doLogout (context, promise) {
+    context.commit(types.SET_TOKEN, {token: ''});
+    context.commit(types.SET_USERID, {userId: ''});
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('userId');
     return new Promise((resolve, reject) => {
       promise.then(
         (res) => {
           if (res.ok === true) {
-            // 登出成功
-            context.commit(types.SET_TOKEN, {token: ''});
-            context.commit(types.SET_USERID, {userId: ''});
-            localStorage.removeItem('accessToken');
-            localStorage.removeItem('userId');
             resolve();
           } else {
             reject();
           }
         },
-        () => {reject()}
+        () => {
+          reject()
+        }
       )
     })
   },
