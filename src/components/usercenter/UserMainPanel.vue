@@ -1,5 +1,5 @@
 <template>
-  <div class="main-area">
+  <div class="profile-container">
     <h1>欢迎来到个人中心</h1>
     <div v-if="!edit" class="message-container">
       <p>用户名： {{userData.username}}</p>
@@ -100,8 +100,8 @@
 </script>
 
 <style lang="less" scoped>
-  .main-area {
-    margin: 40px 15%;
+  .profile-container {
+    margin: 20px 20px;
 
     .message-container {
       padding: 20px;
