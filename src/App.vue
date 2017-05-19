@@ -8,11 +8,9 @@
 export default {
   name: 'app',
   created() {
-    let path = this.$router.path;
+    let path = this.$route.path;
     let self = this;
     this.$store.dispatch('init', {path, router: self.$router})
-  },
-  methods: {
   }
 }
 </script>
