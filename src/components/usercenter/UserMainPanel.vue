@@ -61,7 +61,7 @@
     mounted() {
       if (this.userId === '') {
         this.$router.push('login')
-      } else {
+      } else if (this.userData === {}) {
         this.loadData();
       }
     },
