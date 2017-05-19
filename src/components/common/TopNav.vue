@@ -10,6 +10,9 @@
       <Menu-item v-if="unauth" name="2">
         注册
       </Menu-item>
+      <Menu-item v-if="!unauth" name="4">
+        个人中心
+      </Menu-item>
       <Menu-item v-if="!unauth" name="3">
         登出
       </Menu-item>
@@ -40,13 +43,16 @@
       handleMenuSelectChange(name) {
         switch (name) {
           case '1':
-            this.$router.push('login');
+            this.$router.push('/login');
             break;
           case '2':
-            this.$router.push('reg');
+            this.$router.push('/reg');
             break;
           case '3':
             this.doLogout();
+            break;
+          case '4':
+            this.$router.push('/usercenter');
             break;
         }
       },
