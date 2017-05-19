@@ -7,6 +7,7 @@ import Live from '../components/live/Live.vue'
 import UserCenter from '../components/usercenter/UserCenter.vue';
 import Profile from '../components/usercenter/UserMainPanel.vue';
 import ChangePassword from '../components/usercenter/ChangePassword.vue';
+import BeAnchor from '../components/usercenter/BeAnchor.vue';
 // import Hello from '@/components/Hello'
 
 Vue.use(Router)
@@ -48,6 +49,11 @@ export default new Router({
           path: 'password',
           name: 'changePassword',
           component: ChangePassword
+        },
+        {
+          path: 'beanchor',
+          name: 'toBeAnchor',
+          component: BeAnchor
         }
       ]
     }

@@ -11,13 +11,21 @@
       </Menu-item>
     </Menu-group>
     <Menu-group title="功能区">
-      <Menu-item name="3">
+      <Menu-item name="3" v-if="!isAnchor">
         <Icon type="heart"></Icon>
         我要当主播
       </Menu-item>
-      <Menu-item name="4">
+      <Menu-item name="4" v-if="isAnchor">
         <Icon type="heart-broken"></Icon>
         我的直播
+      </Menu-item>
+      <Menu-item name="5" v-if="isAnchor">
+        <Icon type="heart"></Icon>
+        创建直播
+      </Menu-item>
+      <Menu-item name="6">
+        <Icon type="heart-broken"></Icon>
+        我的收藏
       </Menu-item>
     </Menu-group>
   </Menu>
@@ -25,6 +33,11 @@
 
 <script>
   export default {
+    computed: {
+      isAnchor() {
+        return this.$store.state.user.userData.isAnchor !== undefined ? this.$store.state.user.userData.isAnchor : false;
+      }
+    },
     data() {
       return {
         activeItem: '1'
@@ -43,7 +56,7 @@
             this.$router.push('/usercenter/password');
             break;
           case '3':
-            this.doLogout();
+            this.$router.push('/usercenter/beanchor');
             break;
           case '4':
             this.$router.push('/usercenter');
@@ -58,6 +71,9 @@
             break;
           case '/usercenter/password':
             this.activeItem = '2';
+            break;
+          case '/usercenter/beanchor':
+            this.activeItem = '3';
             break;
         }
       }
