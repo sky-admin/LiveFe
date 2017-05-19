@@ -42,7 +42,7 @@
           let promise = this.$http.post(API.changePassword(accessToken), postData);
           this.$store.dispatch('changePassword', promise).then(
             () => {
-              this.$Notice.error({title: '修改密码成功，请重新登录'});
+              this.$Notice.success({title: '修改密码成功，请重新登录'});
               this.$router.push('/login');
             },
             () => {
