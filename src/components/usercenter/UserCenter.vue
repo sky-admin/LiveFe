@@ -16,10 +16,24 @@
 </template>
 
 <script>
+  import API from '../../config/request';
   import TopNav from '../common/TopNav.vue';
   import vFooter from '../common/Footer.vue';
   import SideBar from './SideBar.vue';
   export default {
+    mounted() {
+      if (this.userId === '') {
+        this.$router.push('login')
+      } else if (JSON.stringify(this.$store.state.user.userData) === '{}') {
+        this.loadData();
+      }
+    },
+    methods: {
+      loadData() {
+        let promise = this.$http.get(API.user(this.$store.state.user.userId, this.$store.state.user.accessToken));
+        this.$store.dispatch('getUserData', promise);
+      }
+    },
     components: {
       TopNav,
       vFooter,

@@ -58,13 +58,6 @@
         return this.$store.state.user.userData
       }
     },
-    mounted() {
-      if (this.userId === '') {
-        this.$router.push('login')
-      } else if (JSON.stringify(this.userData) === '{}') {
-        this.loadData();
-      }
-    },
     methods: {
       loadData() {
         let promise = this.$http.get(API.user(this.userId, this.accessToken));
