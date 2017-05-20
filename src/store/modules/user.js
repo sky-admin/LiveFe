@@ -40,10 +40,10 @@ const actions = {
     })
   },
   doLogout (context, promise) {
-    context.commit(types.SET_TOKEN, {token: ''});
-    context.commit(types.SET_USERID, {userId: ''});
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('userId');
+    context.commit(types.USER_LOGOUT);
+    if (promise === undefined) {
+      return;
+    }
     return new Promise((resolve, reject) => {
       promise.then(
         (res) => {
@@ -82,6 +82,26 @@ const actions = {
       context.commit(types.SET_USERID, {userId: userId});
       router.push(path);
     }
+  },
+  changePassword (context, promise) {
+    return new Promise((resolve, reject) => {
+      promise.then(
+        (res) => {
+          if (res.ok === true) {
+            // 成功
+            context.commit(types.USER_LOGOUT);
+            resolve();
+          } else {
+            // 失败
+            reject();
+          }
+        },
+        () => {
+          // 失败
+          reject();
+        }
+      )
+    })
   }
 };
 
@@ -95,6 +115,13 @@ const mutations = {
   },
   [types.SET_USERDATA] (state, {userData}) {
     state.userData = userData
+  },
+  [types.USER_LOGOUT] (state) {
+    state.userData = {};
+    state.accessToken = '';
+    state.userId = '';
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('userId');
   }
 };
 
