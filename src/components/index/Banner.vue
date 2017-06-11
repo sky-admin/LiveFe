@@ -2,25 +2,35 @@
   <div class="header-area">
     <Row>
       <i-col span="5">
-        <Menu active-name="1" width="auto">
-          <Menu-group title="内容管理">
+        <Menu active-name="0" width="auto">
+          <Menu-group title="分类">
             <Menu-item name="1">
               <Icon type="document-text"></Icon>
-              文章管理
+              通信工程
             </Menu-item>
             <Menu-item name="2">
               <Icon type="chatbubbles"></Icon>
-              评论管理
+              软件工程
             </Menu-item>
-          </Menu-group>
-          <Menu-group title="统计分析">
             <Menu-item name="3">
-              <Icon type="heart"></Icon>
-              用户留存
+              <Icon type="chatbubbles"></Icon>
+              计算机科学与技术
             </Menu-item>
             <Menu-item name="4">
-              <Icon type="heart-broken"></Icon>
-              流失用户
+              <Icon type="chatbubbles"></Icon>
+              Python
+            </Menu-item>
+            <Menu-item name="5">
+              <Icon type="chatbubbles"></Icon>
+              Java
+            </Menu-item>
+            <Menu-item name="6">
+              <Icon type="chatbubbles"></Icon>
+              前端
+            </Menu-item>
+            <Menu-item name="7">
+              <Icon type="chatbubbles"></Icon>
+              全部
             </Menu-item>
           </Menu-group>
         </Menu>
@@ -41,7 +51,7 @@
       return {
         playerConfig: {
           width: '100%',
-          height: 600,
+          height: 400,
           file: "rtmp://cyberplayerplay.kaywang.cn/cyberplayer/demo-L1"
         }
       }
@@ -52,6 +62,8 @@
   }
 </script>
 
-<style>
-
+<style lang="less">
+  .layout-content-main {
+    padding: 10px;
+  }
 </style>
