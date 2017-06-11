@@ -5,7 +5,7 @@
         <Menu active-name="0" width="auto">
           <Menu-group title="分类">
             <Menu-item name="1">
-              <Icon type="document-text"></Icon>
+              <Icon type="chatbubbles"></Icon>
               通信工程
             </Menu-item>
             <Menu-item name="2">
