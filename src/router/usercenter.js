@@ -5,6 +5,8 @@ import UserCenter from '../components/usercenter/UserCenter.vue';
 import Profile from '../components/usercenter/UserMainPanel.vue';
 import ChangePassword from '../components/usercenter/ChangePassword.vue';
 import BeAnchor from '../components/usercenter/BeAnchor.vue';
+import AnchorPanel from '../components/usercenter/AnchorPanel.vue';
+import Collection from '../components/usercenter/Collection.vue';
 
 export default {
   path: '/usercenter',
@@ -26,6 +28,16 @@ export default {
       path: 'beanchor',
       name: 'toBeAnchor',
       component: BeAnchor
+    },
+    {
+      path: 'anchor',
+      name: 'anchorPanel',
+      component: AnchorPanel
+    },
+    {
+      path: 'collection',
+      name: 'collection',
+      component: Collection
     }
   ]
 }
