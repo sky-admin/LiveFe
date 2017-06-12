@@ -1,5 +1,5 @@
 <template>
-  <div class="abc" ref="playercontainer"></div>
+  <div ref="playercontainer"></div>
 </template>
 
 <script>

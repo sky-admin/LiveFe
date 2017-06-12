@@ -1,19 +1,21 @@
 <template>
   <div>
     <top-nav></top-nav>
-    <div></div>
+    <live-panel></live-panel>
     <v-footer></v-footer>
   </div>
 </template>
 
 <script>
-  import VideoPlayer from '../common/VideoPlayer.vue';
+  import LivePanel from './LivePanel.vue';
   import TopNav from '../common/TopNav.vue';
   import vFooter from '../common/Footer.vue';
+
   export default {
     components: {
       TopNav,
-      vFooter
+      vFooter,
+      LivePanel
     }
   }
 </script>
