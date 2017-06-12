@@ -20,18 +20,22 @@
   import TopNav from '../common/TopNav.vue';
   import vFooter from '../common/Footer.vue';
   import SideBar from './SideBar.vue';
+  import {init} from '../../util/util';
   export default {
     mounted() {
-      if (this.userId === '') {
-        this.$router.push('login')
-      } else if (JSON.stringify(this.$store.state.user.userData) === '{}') {
-        this.loadData();
-      }
+      init(this, this.checkLogin);
     },
     methods: {
       loadData() {
         let promise = this.$http.get(API.user(this.$store.state.user.userId, this.$store.state.user.accessToken));
         this.$store.dispatch('getUserData', promise);
+      },
+      checkLogin() {
+        if (this.userId === '') {
+          this.$router.push('login')
+        } else if (JSON.stringify(this.$store.state.user.userData) === '{}') {
+          this.loadData();
+        }
       }
     },
     components: {
@@ -43,8 +47,8 @@
 </script>
 
 <style lang="less" scoped>
-.main-area {
-  margin: 40px 15%;
-  min-height: 600px;
-}
+  .main-area {
+    margin: 40px 15%;
+    min-height: 600px;
+  }
 </style>

@@ -80,6 +80,7 @@ const actions = {
     if (userId) {
       context.commit(types.SET_TOKEN, {token: accessToken});
       context.commit(types.SET_USERID, {userId: userId});
+      context.commit(types.INIT_APPLICATION);
       router.push(path);
     }
   },

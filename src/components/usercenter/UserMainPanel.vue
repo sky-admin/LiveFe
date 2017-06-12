@@ -1,6 +1,6 @@
 <template>
   <div class="profile-container">
-    <h1>欢迎来到个人中心</h1>
+    <h1 class="title">欢迎来到个人中心</h1>
     <div v-if="!edit" class="message-container">
       <p>用户名： {{userData.username}}</p>
       <p>邮箱： {{userData.email}}</p>

@@ -11,21 +11,21 @@
       </Menu-item>
     </Menu-group>
     <Menu-group title="功能区">
-      <Menu-item name="3" v-if="!isAnchor">
+      <Menu-item name="3" v-if="isAnchor">
         <Icon type="heart"></Icon>
         我要当主播
       </Menu-item>
       <Menu-item name="4" v-if="isAnchor">
-        <Icon type="heart-broken"></Icon>
+        <Icon type="heart"></Icon>
         我的直播
       </Menu-item>
-      <Menu-item name="5" v-if="isAnchor">
+      <Menu-item name="5">
         <Icon type="heart"></Icon>
-        创建直播
+        我的收藏
       </Menu-item>
       <Menu-item name="6">
-        <Icon type="heart-broken"></Icon>
-        我的收藏
+        <Icon type="heart"></Icon>
+        观看记录
       </Menu-item>
     </Menu-group>
   </Menu>
@@ -59,7 +59,13 @@
             this.$router.push('/usercenter/beanchor');
             break;
           case '4':
-            this.$router.push('/usercenter');
+            this.$router.push('/usercenter/anchor');
+            break;
+          case '5':
+            this.$router.push('/usercenter/collection');
+            break;
+          case '6':
+            this.$router.push('/usercenter/record');
             break;
         }
       },
@@ -74,6 +80,15 @@
             break;
           case '/usercenter/beanchor':
             this.activeItem = '3';
+            break;
+          case '/usercenter/anchor':
+            this.activeItem = '4';
+            break;
+          case '/usercenter/collection':
+            this.activeItem = '5';
+            break;
+          case '/usercenter/record':
+            this.activeItem = '6';
             break;
         }
       }
