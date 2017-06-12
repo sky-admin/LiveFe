@@ -7,6 +7,7 @@ import ChangePassword from '../components/usercenter/ChangePassword.vue';
 import BeAnchor from '../components/usercenter/BeAnchor.vue';
 import AnchorPanel from '../components/usercenter/AnchorPanel.vue';
 import Collection from '../components/usercenter/Collection.vue';
+import Record from '../components/usercenter/Record.vue';
 
 export default {
   path: '/usercenter',
@@ -38,6 +39,11 @@ export default {
       path: 'collection',
       name: 'collection',
       component: Collection
+    },
+    {
+      path: 'record',
+      name: 'record',
+      component: Record
     }
   ]
 }
