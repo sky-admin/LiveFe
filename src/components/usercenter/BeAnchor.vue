@@ -29,34 +29,42 @@
         }
       }
     },
+    computed: {
+      accessToken() {
+        return this.$store.state.user.accessToken
+      }
+    },
     methods: {
       async submit() {
+        // 表单校验
         if (!this.validateData()) {
           return;
         }
+        // 异步方法更新用户是否是主播
         let rs = await this.updateUserMessage();
-        console.log(rs)
-        // TODO: 提交创建直播间
+        // 如果更新成功，用户身份换成了主播，继续创建
         if (rs) {
           let time = new Date();
           let postData = {
             name: this.formItem.name,
             intro: this.formItem.intro,
-            ownerId: this.$store.state.user.userId,
+            clientId: this.$store.state.user.userId,
             time: time.toDateString()
           };
-          // todo: 接口升级，带token校验
-          this.$http.post(API.createLive, postData).then(
+          this.$http.post(API.createLive(this.accessToken), postData).then(
             (res) => {
-                console.log(res);
-                if (res.ok === true) {
-                    // 创建成功处理
-                }
+              if (res.ok === true) {
+                // TODO：创建成功处理
+                let promise = this.$http.get(API.user(this.$store.state.user.userId, this.$store.state.user.accessToken));
+                this.$store.dispatch('getUserData', promise);
+              }
             }
           )
         }
+        else {
+          // TODO：更新用户信息失败
 
-
+        }
 
       },
       validateData() {

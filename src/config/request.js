@@ -9,12 +9,12 @@ const baseUrl = 'http://localhost:3000/api/';
 // const baseUrl = 'https://apis.lihuanyu.com/api/';
 
 const API = {
-  reg: baseUrl + 'Users',
-  login: baseUrl + 'Users/login',
-  user(userId, accessToken) {return baseUrl + 'Users/' + userId + '?access_token=' + accessToken},
-  logout(accessToken) {return baseUrl + 'Users/logout?access_token=' + accessToken},
-  changePassword(accessToken) {return baseUrl + 'Users/change-password?access_token=' + accessToken},
-  createLive: baseUrl + 'Lives',
+  reg: baseUrl + 'Clients',
+  login: baseUrl + 'Clients/login',
+  user(userId, accessToken) {return baseUrl + 'Clients/' + userId + '?access_token=' + accessToken},
+  logout(accessToken) {return baseUrl + 'Clients/logout?access_token=' + accessToken},
+  changePassword(accessToken) {return baseUrl + 'Clients/change-password?access_token=' + accessToken},
+  createLive(accessToken) {return baseUrl + 'Lives?access_token=' + accessToken},
   getLiveList: baseUrl + 'Lives'
 };
 
