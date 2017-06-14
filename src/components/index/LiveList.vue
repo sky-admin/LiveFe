@@ -2,7 +2,7 @@
   <div class="live-list-container">
     <h1>当前显示 {{catalogName}} 列表</h1>
     <Row>
-      <Col v-for="item in list" :key="item.clientId" :xs="24" :sm="8" :md="6" :lg="6">
+      <Col v-for="item in list" :key="item.clientId" :xs="24" :sm="8" :md="6" :lg="6" v-show="catalogName == '全部' || item.catalog == catalogName">
       <div class="live-item" v-on:click="toDetailLive(item.id)">
         <h1>{{item.name}}</h1>
         <p>{{item.intro}}</p>
@@ -51,6 +51,7 @@
     .live-item {
       padding: 10px;
       border: 1px solid black;
+      margin: 10px;
 
       p {
         font-size: large;
