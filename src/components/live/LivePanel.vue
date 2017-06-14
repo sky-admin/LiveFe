@@ -2,7 +2,8 @@
   <div class="live-panel">
     <div class="player-container">
       <div class="intro">
-        <h1>直播人</h1>
+        <h1>{{name}}</h1>
+        <p>{{intro}}</p>
       </div>
       <video-player :player-config="playerConfig"></video-player>
     </div>
@@ -19,7 +20,9 @@
           width: 800,
           height: 400,
           file: ""
-        }
+        },
+        name: '加载中',
+        intro: '加载中'
       }
     },
     created() {
@@ -31,6 +34,8 @@
           (res) => {
             console.log(res.data);
             this.playerConfig.file = res.data.rtmpPlay;
+            this.intro = res.data.intro;
+            this.name = res.data.name;
           }
         )
       }
