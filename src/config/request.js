@@ -17,7 +17,9 @@ const API = {
   createLive(accessToken) {return baseUrl + 'Lives?access_token=' + accessToken},
   getLiveList: baseUrl + 'Lives',
   getLiveData(clientId) {return baseUrl + 'Clients/' + clientId + '/lives'},
-  getLiveById(liveId) {return baseUrl + 'Lives/' + liveId}
+  getLiveById(liveId) {return baseUrl + 'Lives/' + liveId},
+  submitComment: baseUrl + 'Comments',
+  getLivesComment(liveId) {return baseUrl + 'Lives/' + liveId + '/comments'}
 };
 
 module.exports = API;
