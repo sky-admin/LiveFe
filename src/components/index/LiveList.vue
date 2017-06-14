@@ -1,5 +1,6 @@
 <template>
   <div class="live-list-container">
+    <h1>当前显示 {{catalogName}} 列表</h1>
     <Row>
       <Col v-for="item in list" :key="item.clientId" :xs="24" :sm="8" :md="6" :lg="6">
       <div class="live-item" v-on:click="toDetailLive(item.id)">
@@ -17,6 +18,11 @@
     data() {
       return {
         list: []
+      }
+    },
+    computed: {
+      catalogName() {
+          return this.$store.state.app.indexCatalogName;
       }
     },
     mounted() {
