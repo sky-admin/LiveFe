@@ -5,6 +5,11 @@
       <Form-item label="直播间名称">
         <Input v-model="formItem.name" placeholder="请输入"></Input>
       </Form-item>
+      <Form-item label="分类">
+        <Select v-model="formItem.catalog" style="width:200px">
+          <Option v-for="item in catalogList" :value="item" :key="item">{{ item }}</Option>
+        </Select>
+      </Form-item>
       <Form-item label="房间简介">
         <Input v-model="formItem.intro" type="textarea" :autosize="{minRows: 2,maxRows: 5}"
                placeholder="请输入..."></Input>
@@ -25,8 +30,10 @@
         formItem: {
           name: '',
           intro: '',
-          agree: false
-        }
+          agree: false,
+          catalog: '全部'
+        },
+        catalogList: ["通信工程", "软件工程", "计算机科学与技术", "物联网", "Java", "前端", "全部"]
       }
     },
     computed: {
@@ -54,9 +61,10 @@
           this.$http.post(API.createLive(this.accessToken), postData).then(
             (res) => {
               if (res.ok === true) {
-                // TODO：创建成功处理
+                this.$Notice.success({title: '创建直播间成功'});
                 let promise = this.$http.get(API.user(this.$store.state.user.userId, this.$store.state.user.accessToken));
                 this.$store.dispatch('getUserData', promise);
+                this.$router.push({name: 'anchorPanel'});
               }
             }
           )

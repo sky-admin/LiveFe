@@ -25,7 +25,7 @@
       </Menu-item>
       <Menu-item name="6">
         <Icon type="heart"></Icon>
-        观看记录
+        我的评论
       </Menu-item>
     </Menu-group>
   </Menu>
@@ -65,7 +65,7 @@
             this.$router.push('/usercenter/collection');
             break;
           case '6':
-            this.$router.push('/usercenter/record');
+            this.$router.push('/usercenter/comment');
             break;
         }
       },
@@ -87,7 +87,7 @@
           case '/usercenter/collection':
             this.activeItem = '5';
             break;
-          case '/usercenter/record':
+          case '/usercenter/comment':
             this.activeItem = '6';
             break;
         }
