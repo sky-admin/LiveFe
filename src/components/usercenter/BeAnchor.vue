@@ -55,6 +55,7 @@
           let postData = {
             name: this.formItem.name,
             intro: this.formItem.intro,
+            catalog: this.formItem.catalog,
             clientId: this.$store.state.user.userId,
             time: time.toDateString()
           };
