@@ -16,7 +16,8 @@ const API = {
   changePassword(accessToken) {return baseUrl + 'Clients/change-password?access_token=' + accessToken},
   createLive(accessToken) {return baseUrl + 'Lives?access_token=' + accessToken},
   getLiveList: baseUrl + 'Lives',
-  getLiveData(clientId) {return baseUrl + 'Clients/' + clientId + '/lives'}
+  getLiveData(clientId) {return baseUrl + 'Clients/' + clientId + '/lives'},
+  getLiveById(liveId) {return baseUrl + 'Lives/' + liveId}
 };
 
 module.exports = API;

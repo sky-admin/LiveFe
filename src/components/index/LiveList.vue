@@ -2,7 +2,10 @@
   <div class="live-list-container">
     <Row>
       <Col v-for="item in list" :key="item.clientId" :xs="24" :sm="8" :md="6" :lg="6">
-        {{item.name}}
+      <div v-on:click="toDetailLive(item.id)">
+        <h1>{{item.name}}</h1>
+        <p>{{item.intro}}</p>
+      </div>
       </Col>
     </Row>
   </div>
@@ -27,6 +30,9 @@
             this.list = res.data;
           }
         )
+      },
+      toDetailLive(id) {
+        this.$router.push({name: 'live', params: {id: id}});
       }
     }
   }
