@@ -19,7 +19,8 @@ const API = {
   getLiveData(clientId) {return baseUrl + 'Clients/' + clientId + '/lives'},
   getLiveById(liveId) {return baseUrl + 'Lives/' + liveId},
   submitComment: baseUrl + 'Comments',
-  getLivesComment(liveId) {return baseUrl + 'Lives/' + liveId + '/comments'}
+  getLivesComment(liveId) {return baseUrl + 'Lives/' + liveId + '/comments'},
+  getClientComment(clientId) {return baseUrl + 'Clients/' + clientId + '/comments'}
 };
 
 module.exports = API;
