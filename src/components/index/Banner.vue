@@ -2,7 +2,7 @@
   <div class="header-area">
     <Row>
       <i-col span="5">
-        <Menu active-name="0" width="auto">
+        <Menu :active-name="index" width="auto" v-on:on-select="handleMenuSelectChange">
           <Menu-group title="分类">
             <Menu-item name="1">
               <Icon type="chatbubbles"></Icon>
@@ -18,7 +18,7 @@
             </Menu-item>
             <Menu-item name="4">
               <Icon type="chatbubbles"></Icon>
-              Python
+              物联网
             </Menu-item>
             <Menu-item name="5">
               <Icon type="chatbubbles"></Icon>
@@ -46,6 +46,7 @@
 
 <script>
   import VideoPlayer from '../common/VideoPlayer.vue';
+  import * as types from '../../store/mutation-types';
   export default {
     data() {
       return {
@@ -54,6 +55,16 @@
           height: 400,
           file: "rtmp://cyberplayerplay.kaywang.cn/cyberplayer/demo-L1"
         }
+      }
+    },
+    computed: {
+      index() {
+        return this.$store.state.app.indexCatalog;
+      }
+    },
+    methods: {
+      handleMenuSelectChange(name) {
+        this.$store.commit(types.CHANGE_INDEX_CATALOG, name);
       }
     },
     components: {
