@@ -11,7 +11,7 @@
       </Menu-item>
     </Menu-group>
     <Menu-group title="功能区">
-      <Menu-item name="3" v-if="isAnchor">
+      <Menu-item name="3" v-if="!isAnchor">
         <Icon type="heart"></Icon>
         我要当主播
       </Menu-item>

@@ -3,7 +3,7 @@
     <top-nav></top-nav>
     <div class="layout-content">
       <banner></banner>
-
+      <live-list></live-list>
     </div>
     <v-footer></v-footer>
   </div>
@@ -13,6 +13,7 @@
   import Banner from './Banner.vue';
   import TopNav from '../common/TopNav.vue';
   import vFooter from '../common/Footer.vue';
+  import LiveList from './LiveList.vue';
 
   export default {
     data() {
@@ -24,7 +25,8 @@
     components: {
       Banner,
       TopNav,
-      vFooter
+      vFooter,
+      LiveList
     }
   }
 </script>
