@@ -51,6 +51,7 @@
     .live-item {
       padding: 10px;
       border: 1px solid black;
+      margin: 10px;
 
       p {
         font-size: large;
