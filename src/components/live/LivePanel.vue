@@ -7,10 +7,15 @@
       </div>
       <video-player :player-config="playerConfig"></video-player>
     </div>
+    <hr>
+    <div class="comment-container">
+      <comment></comment>
+    </div>
   </div>
 </template>
 
 <script>
+  import Comment from './Comment.vue';
   import VideoPlayer from '../common/VideoPlayer.vue';
   import API from '../../config/request';
   export default {
@@ -32,7 +37,6 @@
       getLiveData() {
         this.$http.get(API.getLiveById(this.$route.params.id)).then(
           (res) => {
-            console.log(res.data);
             this.playerConfig.file = res.data.rtmpPlay;
             this.intro = res.data.intro;
             this.name = res.data.name;
@@ -41,7 +45,8 @@
       }
     },
     components: {
-      VideoPlayer
+      VideoPlayer,
+      Comment
     }
   }
 </script>
@@ -54,6 +59,27 @@
     .player-container {
       display: inline-block;
       text-align: left;
+
+      .intro {
+        h1 {
+          font-size: 30px;
+        }
+
+        p {
+          font-size: large;
+          margin: 10px;
+        }
+      }
+    }
+
+    hr {
+      margin: 20px 0 0 0;
+    }
+
+    .comment-container {
+      display: inline-block;
+      width: 800px;
+      margin: 20px 0;
     }
   }
 </style>
